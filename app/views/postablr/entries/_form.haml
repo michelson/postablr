@@ -1,0 +1,57 @@
+
+- path = @entry.new_record? ? new_fast_upload_path : edit_fast_upload_path
+
+- tag_list = ActsAsTaggableOn::Tag.all.map(&:name)
+%iframe{:id=>"upload_frame", :name=>"upload_frame", :style=>"display: none"}
+
+= semantic_form_for @entry , :url=> path, :html=>{:multipart=>true, :path=>new_fast_upload_path} do |f|
+  .col_system.col.fluid
+    .col.medium.publisher
+
+      - unless @entry.new_record?
+        %input{:name=>:post_id, :type=>:hidden, :value=>@entry.id}
+      - else
+        %input{:name=>:type, :type=>:hidden, :value=>params[:type]}
+
+      = f.inputs do
+        = f.semantic_fields_for :postable do |postable|
+
+          %h3 Publicar → #{postable.object.class.to_s.underscore.split('/')[1]}
+          = render "postablr/entries/fields/#{@entry.postable_name}",  :f => postable
+        %li#facebook-list.input-text
+          %input#tag_list_input{:type => "text", :value => "", :placeholder => "Etiquetas"}/
+          %ul#preadded{:style => "display:none"}
+            - @entry.tags.each do |tag|
+              %li{:rel=> "#{tag.id}"}= tag.name
+
+          #autosuggest
+            .default Escribe las etiquetas
+            %ul#feed
+
+      = f.actions do
+        = f.action :submit, :button_html => { :disable_with => 'Wait...' }
+        .uploader_div
+          #uploading{ :style => "display:none" }
+            #progress.bar
+              #progressbar
+            #statusBar
+            .plane
+          #load_photos{ :style => "display:none" }
+
+    .col.small.publisher_options
+      = f.inputs do
+        .form_block.options
+          %h4
+            %span.icons.mini.circle.magenta &#x2699;
+            Opciones
+          = f.input :comments_enabled
+          -#= f.input :highlight
+
+          -#= f.input :slug
+          -#= f.input :content_source
+          -#= f.input :is_published
+          -#= f.input :publish_at
+          -#= f.input :unpublish_at
+
+          -#= f.input :tag_list #, :as=>:hidden
+

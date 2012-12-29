@@ -1,0 +1,12 @@
+class CreatePostablrEntryImages < ActiveRecord::Migration
+  def change
+    create_table :postablr_entry_images do |t|
+      t.string :photo
+      t.text :body
+      t.string :photo_content_type
+      t.string :photo_size
+
+      t.timestamps
+    end
+  end
+end

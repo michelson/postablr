@@ -1,0 +1,46 @@
+.page_header
+  %h1 Publicaciones
+  %p
+    Blog
+    %span.icons.mini &#x25BB;
+
+%div.col_system.col.fluid
+  %div.col.medium
+
+    %section.publications
+      %ul#masonry_reload.publication_stream.wide
+        = render :partial=> 'postablr/blog/entry_display', :collection=> @entries, :as=> :entry
+
+      %nav.pagination.publication_paginator
+        = paginate @entries #, :remote => true
+
+  %div.col.small.help
+    %h4
+      %span.icons.mini.circle.magenta &#xE100;
+      Most used Tags
+    %ul.topics
+      - cache("BlogPopularTags", :expires_in=>1.hour) do
+        - Postablr::Entry.tag_counts_on(:tags).limit(16).each do |tag|
+          %li
+            %span.icons.small &#xE100;
+            = link_to("#{tag.name} (#{tag.count})", blog_tag_path(tag.name), :class=>"pjax")
+
+    %h4
+      %span.icons.mini.circle.magenta &#xE9A0;
+      Filter publications
+    %ul
+      %li
+        Published types
+        %ul
+          %li
+            = link_to "Texto", filter_blog_path("post")
+          %li
+            = link_to "Imagen", filter_blog_path("image")
+          %li
+            = link_to "Cita", filter_blog_path("quote")
+          %li
+            = link_to "Libro", filter_blog_path("ebook")
+          %li
+            = link_to "Audio", filter_blog_path("audio")
+          %li
+            = link_to "Video", filter_blog_path("video")

@@ -1,0 +1,11 @@
+%li.article.quote{:id=>"entry-#{postable.entry.id}"}
+  %span.editor
+
+  %blockquote.article_quote
+    = raw postable.body
+  .article_meta
+    %h3
+      =link_to raw( postable.source), entry_path(postable.entry)
+      %span.meta.author
+        Por
+        = postable.entry.user.name

@@ -1,0 +1,12 @@
+%li.article.quote
+  %blockquote.article_quote
+    = raw sanitize_relaxed( postable.body)
+  .article_meta
+    %h3
+      %a{:href => "#"}= raw postable.source
+      %span.meta.author
+        Por
+        = postable.entry.user.name
+
+
+  = render :partial=>'postablr/blog/show/aside', :locals=>{:postable=>postable}

@@ -1,0 +1,39 @@
+%section.publications
+  - unless @entry.postable.blank?
+    -#= link_to "Edit", edit_entry_path(@entry)
+    -#= link_to "Delete", entry_path(@entry), :method=>:delete, :confirm=>"Are you sure?"
+  
+    = render "blog/show/#{@entry.postable.class.to_s.underscore.split('/')[1]}",  :postable => @entry.postable
+
+  .tags
+    Tags: 
+    = raw @entry.tags.collect{|o| link_to o.name, blog_tag_path(o.name)}.join(", ")
+
+  .col_system.col.fluid.comments_system
+    .col.medium
+      %h2 
+        Comentarios 
+        %span#comments_count= @entry.comments.size
+        
+      %ul#entry_comments
+        = render :partial=>'blog/comments/comment', :collection=>@entry.comments , :as=>:comment
+      #comment_form
+        - if @entry.comments_enabled?
+          = render 'blog/comments/form'
+        - else
+          = t("comments_disabled")
+    .col.small.help
+      %h4
+        Ayuda
+      .help.guideline
+        %p
+          Este es un espacio para la sana convivencia, por favor respeta los lineamientos de la comunidad al momento de participar.
+        %p
+          Puedes utilizar algo de HTML para enriquecer tus comentarios
+%aside
+
+  - unless @relateds
+    .hentry_related
+      %h2 Related
+      - @relateds.each do |entry|
+        = link_to entry.postable.title , blog_entry_path( entry ), :class=>"pjax"

@@ -1,0 +1,11 @@
+%li.article.link
+  .article_meta
+    %span.meta.kind Enlace
+    %h3
+      %a{:href => "#{postable.url}"}="#{postable.title} →"
+      %span.meta.author
+        Por
+        = postable.entry.user.name
+
+  = render :partial=>'postablr/blog/show/aside', :locals=>{:postable=>postable}
+

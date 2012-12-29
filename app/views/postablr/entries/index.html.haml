@@ -1,0 +1,11 @@
+= render "entries_menu"
+
+%h1= t("MyEntries")
+
+%section.publications
+  %ul.publication_stream
+    = render :partial=>"entry", :collection => @entries
+
+  %nav.pagination.publication_paginator
+    -#= paginate @entries, :remote => true
+

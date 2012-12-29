@@ -1,0 +1,13 @@
+%li.article.video
+  .article_video
+    = raw postable.body
+  .article_meta
+    %span.meta.kind Audio
+    %ul.playlist
+      %li
+        %a{ :href=>"#{postable.file.url}"}= postable.audio_title
+    %span.meta.author
+      = postable.entry.user.name
+
+  = render :partial=>'postablr/blog/show/aside', :locals=>{:postable=>postable}
+

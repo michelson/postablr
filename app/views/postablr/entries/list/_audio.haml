@@ -1,0 +1,14 @@
+%li.article.video{:id=>"entry-#{postable.entry.id}"}
+  %span.editor
+
+  .article_meta
+    %span.meta.kind Audio
+    %span.meta.author
+      Por
+      = postable.entry.user.name
+
+    %ul.playlist
+      %li
+        %a{ :href=>"#{postable.file.url}"}= postable.audio_title
+  .article_text
+    %p= raw sanitize_clean(postable.body , 200 , " #{link_to t('read_more'), blog_entry_path( postable.entry ) } ..." )
