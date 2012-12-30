@@ -14,6 +14,7 @@ but is a work in progress, don´t use in production!
   + tagging support - depend on acts_as_taggable_on
   + Rich text editor support
   + blogs support if many blogs in site
+  + feed generation (ATOM)
 
 # instalation
 
