@@ -1,5 +1,6 @@
 module Postablr
   module BlogHelper
+
     def sanitize_clean(html, truncate = false, link=nil)
       unless truncate
         Sanitize.clean(html, Sanitize::Config::RESTRICTED)

@@ -37,7 +37,7 @@ protected
     end
 
     def collection
-      @entries ||= end_of_association_chain.order("created_at desc") #.page(params[:page]).per(6)
+      @entries ||= end_of_association_chain.order("created_at desc").page(params[:page]).per(6)
     end
   end
 end

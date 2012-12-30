@@ -1,14 +1,26 @@
 
-%ul
+%ul.nav.nav-list.affix
   %li
-    = link_to "Publish Text", new_entries_for_path("post")
+    = link_to new_entries_for_path("post") do
+      %span.icon-book
+      Publish Text
   %li
-    = link_to "Publish Quote", new_entries_for_path("quote")
+    = link_to new_entries_for_path("quote") do
+      %span.icon-music
+      Publish Quote
   %li
-    = link_to "Publish Image", new_entries_for_path("image")
+    = link_to new_entries_for_path("image") do
+      %span.icon-camera
+      Publish Image
   %li
-    = link_to "Publish Audio", new_entries_for_path("audio")
+    = link_to new_entries_for_path("audio") do
+      %span.icon-music
+      Publish Audio
   %li
-    = link_to "Publish Video", new_entries_for_path("video")
+    = link_to new_entries_for_path("video") do
+      %span.icon-facetime-video
+      Publish Video
   %li
-    = link_to "Publish Link", new_entries_for_path("link")
+    = link_to new_entries_for_path("link") do
+      %span.icon-bookmark
+      Publish Link

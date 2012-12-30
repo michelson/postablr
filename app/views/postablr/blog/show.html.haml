@@ -4,21 +4,23 @@
     Blog
     %span.icons.mini &#x25BB;
 
-%div.col_system.col.fluid
-  %div.col.medium
+%div.row-fluid
+  .span8
 
     %section.publications
       %ul#masonry_reload.publication_stream.wide
         = render :partial=> 'postablr/blog/entry_display', :collection=> @entries, :as=> :entry
 
       %nav.pagination.publication_paginator
-        = paginate @entries #, :remote => true
+        = paginate @entries
 
-  %div.col.small.help
+  .span4
+
     %h4
-      %span.icons.mini.circle.magenta &#xE100;
+      %span.icons
       Most used Tags
-    %ul.topics
+
+    %ul
       - cache("BlogPopularTags", :expires_in=>1.hour) do
         - Postablr::Entry.tag_counts_on(:tags).limit(16).each do |tag|
           %li
@@ -26,7 +28,7 @@
             = link_to("#{tag.name} (#{tag.count})", blog_tag_path(tag.name), :class=>"pjax")
 
     %h4
-      %span.icons.mini.circle.magenta &#xE9A0;
+      %span
       Filter publications
     %ul
       %li

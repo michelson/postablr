@@ -9,6 +9,8 @@ module Postablr
 
     #has_many :comments,  :as=>:commentable , :class_name=>Forum::Comment
 
+    #default_scope includes(:postable)
+
     accepts_nested_attributes_for :postable, :reject_if => :all_blank, :allow_destroy => true
 
     after_initialize :defaults

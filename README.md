@@ -15,6 +15,12 @@ but is a work in progress, don´t use in production!
   + Rich text editor support
   + blogs support if many blogs in site
   + feed generation (ATOM)
+  + SEO
+    + related posts
+    + post title
+    + images for SEO
+    + Provide meta tags
+    + Nofollow external links
 
 # instalation
 

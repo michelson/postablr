@@ -1,4 +1,3 @@
-= render "postablr/entries/entries_menu"
 
 - cache("UserEntries-#{entry.id}-#{entry.updated_at}") do
   = render "postablr/entries/list/#{entry.postable_name}",  :postable => entry.postable

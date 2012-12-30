@@ -4,11 +4,11 @@ module Postablr
   class BlogController < ApplicationController
 
     def show
-      @entries = Postablr::Entry.includes(:postable).published.order("postablr_entries.postable_type.created_at desc").page(params[:page]).per(6)
+      @entries = Postablr::Entry.includes(:postable).published.order("postablr_entries.postable_type desc").page(params[:page]).per(6)
     end
 
     def filter
-      @entries = Postablr::Entry.includes(:postable).published.where("postablr_entries.postable_type =?", "Entry::#{params[:filter].capitalize}").order("postablr_entries.created_at desc").page(params[:page]).per(6)
+      @entries = Postablr::Entry.includes(:postable).published.where("postablr_entries.postable_type =?", "Postable::Entry::#{params[:filter].capitalize}").order("postablr_entries.created_at desc").page(params[:page]).per(6)
       render :show
     end
 
