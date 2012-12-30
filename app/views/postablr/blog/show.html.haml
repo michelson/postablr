@@ -11,32 +11,7 @@
       %nav.pagination.publication_paginator
         = paginate @entries
 
+
+
   .span4
-    .nav.affix
-      %h4
-        %span.icons
-        Most used Tags
-
-      %ul
-        - cache("BlogPopularTags", :expires_in=>1.hour) do
-          - Postablr::Entry.tag_counts_on(:tags).limit(16).each do |tag|
-            %li
-              %span.icon-bookmark
-              = link_to("#{tag.name} (#{tag.count})", blog_tag_path(tag.name), :class=>"pjax")
-
-      %h4
-        %span
-        Filter publications
-      %ul
-        %li
-          = link_to "Texto", filter_blog_path("post")
-        %li
-          = link_to "Imagen", filter_blog_path("image")
-        %li
-          = link_to "Cita", filter_blog_path("quote")
-        %li
-          = link_to "Libro", filter_blog_path("ebook")
-        %li
-          = link_to "Audio", filter_blog_path("audio")
-        %li
-          = link_to "Video", filter_blog_path("video")
+    = render "sidebar"

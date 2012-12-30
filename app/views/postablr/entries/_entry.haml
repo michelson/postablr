@@ -5,8 +5,12 @@
     .article_meta
       %span.meta.badge= entry.postable_name
       %span.meta.author
-        Por
-      = entry.user.name
+        By
+        = entry.user.name
+      %span.date
+        On
+        = l entry.publish_at, :format=>:short
+
 
     = render "postablr/entries/list/#{entry.postable_name}",  :postable => entry.postable
 
