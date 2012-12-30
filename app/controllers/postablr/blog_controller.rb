@@ -3,8 +3,14 @@ require_dependency "postablr/application_controller"
 module Postablr
   class BlogController < ApplicationController
 
+    respond_to :html ,:rss
+
     def show
       @entries = Postablr::Entry.includes(:postable).published.order("postablr_entries.postable_type desc").page(params[:page]).per(6)
+      respond_to do |format|
+        format.rss { render :layout => false }
+        format.html
+      end
     end
 
     def filter

@@ -4,8 +4,15 @@
 - tag_list = ActsAsTaggableOn::Tag.all.map(&:name)
 
 %iframe{:id=>"upload_frame", :name=>"upload_frame", :style=>"display: none"}
+/
+  Inside your views, use the 'simple_form_for' with one of the Bootstrap form
+  classes, '.form-horizontal', '.form-inline', '.form-search' or
+  '.form-vertical', as the following:
 
-= semantic_form_for @entry , :url=> path, :html=>{:multipart=>true, :path=>new_fast_upload_path} do |f|
+  -#= simple_form_for(@user, :html => {:class => 'form-horizontal' }) do |form|
+
+
+= simple_form_for @entry , :url=> path, :html=>{:multipart=>true, :path=>new_fast_upload_path, :class=>"form-inline"} do |f|
   .row-fluid
     .span8
 
@@ -14,48 +21,36 @@
       - else
         %input{:name=>:type, :type=>:hidden, :value=>params[:type]}
 
-      = f.inputs do
-        = f.semantic_fields_for :postable do |postable|
+      -#= fieldset "general"
+      = f.fields_for :postable do |postable|
 
-          %h3
-            %span.icon-edit
-            Publicar → #{@entry.postable_name}
-          = render "postablr/entries/fields/#{@entry.postable_name}",  :f => postable
+        %h3
+          %span.icon-edit
+          Publicar → #{@entry.postable_name}
+        = render "postablr/entries/fields/#{@entry.postable_name}",  :f => postable
 
-        %li#facebook-list.input-text
-          %input#tag_list_input{:type => "text", :value => "", :placeholder => "Etiquetas"}/
-          %ul#preadded{:style => "display:none"}
-            - @entry.tags.each do |tag|
-              %li{:rel=> "#{tag.id}"}= tag.name
+      = f.input :tag_list, :input_html=>{:class=>"input-xxlarge"}
 
-          #autosuggest
-            .default Escribe las etiquetas
-            %ul#feed
-
-      = f.actions do
-        = f.action :submit, :button_html => { :disable_with => 'Wait...' }
-        .uploader_div
-          #uploading{ :style => "display:none" }
-            #progress.bar
-              #progressbar
-            #statusBar
-            .plane
-          #load_photos{ :style => "display:none" }
+      -#= f.actions do
+      = f.button :submit, :button_html => { :disable_with => 'Wait...' }
+      .uploader_div
+        #uploading{ :style => "display:none" }
+          #progress.bar
+            #progressbar
+          #statusBar
+          .plane
+        #load_photos{ :style => "display:none" }
 
     .span4
-      = f.inputs do
-        .form_block.options
-          %h4
-            %span.icon-wrench
-            Opciones
-          = f.input :comments_enabled
-          = f.input :highlight
-
-          = f.input :slug
-          = f.input :content_source
-          = f.input :is_published
-          = f.input :publish_at
-          = f.input :unpublish_at
-
-          = f.input :tag_list #, :as=>:hidden
-
+      -#= fieldset "config"
+      .form_block.options
+        %h4
+          %span.icon-wrench
+          Options
+        = f.input :publish_at  , :as=>:string, :input_html=>{:class=>"datepicker"}
+        = f.input :unpublish_at, :as=>:string, :input_html=>{:class=>"datepicker"}
+        = f.input :comments_enabled
+        = f.input :highlight
+        = f.input :is_published
+        = f.input :slug
+        = f.input :content_source

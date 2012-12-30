@@ -16,7 +16,7 @@ module Postablr
 
     def create
       @entry = current_user.entries.new(params[:entry].except("postable_attributes"))
-      @entry.tag_list = ActsAsTaggableOn::Tag.find(params[:tag_list_input]).map(&:name) unless params[:tag_list_input].blank?
+      #@entry.tag_list = ActsAsTaggableOn::Tag.find(params[:tag_list_input]).map(&:name) unless params[:tag_list_input].blank?
       @entry.postable = "Postablr::Entry::#{params[:type].capitalize}".constantize.new(params[:entry][:postable_attributes])
       create!{
         if @entry.errors.blank?
@@ -27,8 +27,12 @@ module Postablr
 
     def update
       @entry = current_user.entries.find(params[:post_id])
-      @entry.tag_list = ActsAsTaggableOn::Tag.find(params[:tag_list_input]).map(&:name) unless params[:tag_list_input].blank?
+      #@entry.tag_list = ActsAsTaggableOn::Tag.find(params[:tag_list_input]).map(&:name) unless params[:tag_list_input].blank?
       update!{ entry_url(@entry) if @entry.errors.blank? }
+    end
+
+    def destroy
+      destroy!{entries_url}
     end
 
 protected

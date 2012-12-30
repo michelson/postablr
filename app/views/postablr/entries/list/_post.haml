@@ -1,14 +1,5 @@
-%li.article.text{:id=>"entry-#{postable.entry.id}"}
-  %span.editor
+%h3
+  %a{:href => blog_entry_path(postable.entry)}= postable.title
 
-  .article_meta
-    %span.meta.kind Post
-    %h3
-      %a{:href => blog_entry_path(postable.entry)}= postable.title
-      %span.meta.author
-        Por
-        = postable.entry.user.name
-
-
-  .article_text
-    %p= raw sanitize_clean(postable.body , 200 , " #{link_to t('read_more'), blog_entry_path( postable.entry ) } ..." )
+.article_text
+  %p= raw sanitize_clean(postable.body , 200 , " #{link_to t('read_more'), blog_entry_path( postable.entry ) } ..." )

@@ -1,6 +1,6 @@
 module Postablr
   class Entry::Audio < ActiveRecord::Base
-    attr_accessible :file, :file_content_type, :file_size
+    attr_accessible :file, :file_content_type, :file_size, :title, :body
     has_one :entry, :as => :postable
     mount_uploader :file, EntryAudioUploader
     validates_presence_of :file

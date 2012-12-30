@@ -1,3 +1,18 @@
 
 - cache("UserEntries-#{entry.id}-#{entry.updated_at}") do
-  = render "postablr/entries/list/#{entry.postable_name}",  :postable => entry.postable
+  %li{:id=>"entry-#{entry.id}", :class=>entry.postable_name}
+
+    .article_meta
+      %span.meta.badge= entry.postable_name
+      %span.meta.author
+        Por
+      = entry.user.name
+
+    = render "postablr/entries/list/#{entry.postable_name}",  :postable => entry.postable
+
+    = link_to edit_entry_path(entry) do
+      %span.icon-edit
+      edit
+    = link_to entry_path(entry), :method=>:delete , :confirm=>"are you sure?" do
+      %span.icon-remove
+      destroy

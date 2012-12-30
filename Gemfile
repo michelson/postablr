@@ -14,6 +14,7 @@ gemspec
 gem "jquery-rails"
 gem "acts_as_unvlogable" , :git=>"git@github.com:michelson/acts_as_unvlogable.git"
 gem "formtastic" # ???? replace it for normal rails form helper
+gem "simple_form"
 gem "acts-as-taggable-on"
 gem "sanitize"
 gem "carrierwave"
@@ -23,6 +24,8 @@ gem "haml"
 gem "mini_magick"
 gem "kaminari"
 gem "devise"
+gem "redactor-rails"
+gem 'bootstrap-datepicker-rails'
 
 group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes

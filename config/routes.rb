@@ -13,7 +13,7 @@ Postablr::Engine.routes.draw do
     #resources :entries, :controller=> "blog/entries" do
       #resources :comments, :controller => "blog/comments"
     #end
-    #resources :tags, :controller=>"blog/tags"
+    resources :tags, :controller=>"blog/tags"
     #resources :authors
   end
 
