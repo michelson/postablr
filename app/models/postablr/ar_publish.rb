@@ -1,9 +1,9 @@
 # -*- encoding : utf-8 -*-
+# extracted from https://github.com/ismasan/ar_publish_control
 module Postablr
   module ArPublish
 
     extend ActiveSupport::Concern
-
 
     included do
       #extend ClassMethods

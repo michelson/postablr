@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "Postablr is blog mountable engine."
   s.description = "Postablr a mountable blog engine similar with focus on tumblr entries style"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.2.8"

@@ -18,6 +18,7 @@
 
           %h3 Publicar → #{postable.object.class.to_s.underscore.split('/')[1]}
           = render "postablr/entries/fields/#{@entry.postable_name}",  :f => postable
+
         %li#facebook-list.input-text
           %input#tag_list_input{:type => "text", :value => "", :placeholder => "Etiquetas"}/
           %ul#preadded{:style => "display:none"}

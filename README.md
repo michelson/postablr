@@ -7,10 +7,13 @@ but is a work in progress, don´t use in production!
 ## Niceties
 
 + Devise compatible
-+ Rich text editor support
 + Tumblr style for post types (image, text, video, quote)
 + Sanitize html
-+ tagging support - depend on acts_as_taggable_on
+
++ TODO
+  + tagging support - depend on acts_as_taggable_on
+  + Rich text editor support
+  + blogs support if many blogs in site
 
 # instalation
 

@@ -23,6 +23,9 @@ gem "haml"
 gem "mini_magick"
 gem "kaminari"
 gem "devise"
+
+gem 'bootstrap-sass', '~> 2.2.1.1'
+gem 'jquery-ui-rails'
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing

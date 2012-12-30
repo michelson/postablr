@@ -8,7 +8,7 @@
   .article_video
     = raw postable.embed_html
 
-    %p= raw sanitize_relaxed( postable.body)
+    %p= raw sanitize_relaxed( postable.body )
 
     %span.meta.author
       = postable.entry.user.name
