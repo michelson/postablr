@@ -1,18 +1,11 @@
 
-- path = @entry.new_record? ? new_fast_upload_path : edit_fast_upload_path
-
-- tag_list = ActsAsTaggableOn::Tag.all.map(&:name)
-
 %iframe{:id=>"upload_frame", :name=>"upload_frame", :style=>"display: none"}
 /
   Inside your views, use the 'simple_form_for' with one of the Bootstrap form
   classes, '.form-horizontal', '.form-inline', '.form-search' or
   '.form-vertical', as the following:
 
-  -#= simple_form_for(@user, :html => {:class => 'form-horizontal' }) do |form|
-
-
-= simple_form_for @entry , :url=> path, :html=>{:multipart=>true, :path=>new_fast_upload_path, :class=>"form-inline"} do |f|
+= simple_form_for @entry , :url=> (@entry.new_record? ? new_fast_upload_path : edit_fast_upload_path), :html=>{:multipart=>true, :path=>new_fast_upload_path, :class=>"form-inline"} do |f|
   .row-fluid
     .span8
 
@@ -21,7 +14,6 @@
       - else
         %input{:name=>:type, :type=>:hidden, :value=>params[:type]}
 
-      -#= fieldset "general"
       = f.fields_for :postable do |postable|
 
         %h3
@@ -31,7 +23,6 @@
 
       = f.input :tag_list, :input_html=>{:class=>"input-xxlarge"}
 
-      -#= f.actions do
       = f.button :submit, :button_html => { :disable_with => 'Wait...' }
       .uploader_div
         #uploading{ :style => "display:none" }
@@ -42,7 +33,6 @@
         #load_photos{ :style => "display:none" }
 
     .span4
-      -#= fieldset "config"
       .form_block.options
         %h4
           %span.icon-wrench
