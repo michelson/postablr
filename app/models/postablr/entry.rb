@@ -27,6 +27,7 @@ module Postablr
     def defaults
       return unless new_record?
       self.comments_enabled = true
+      self.is_published = true
     end
 
 
