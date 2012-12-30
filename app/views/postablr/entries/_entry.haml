@@ -4,6 +4,7 @@
 
     .article_meta
       %span.meta.badge= entry.postable_name
+      %span.meta.status= entry.is_published ? "Published" : "Not published"
       %span.meta.author
         By
         = entry.user.name
@@ -11,12 +12,14 @@
         On
         = l entry.publish_at, :format=>:short
 
+      = link_to edit_entry_path(entry) do
+        %span.icon-edit
+        edit
+      = link_to entry_path(entry), :method=>:delete , :confirm=>"are you sure?" do
+        %span.icon-remove
+        destroy
+
 
     = render "postablr/entries/list/#{entry.postable_name}",  :postable => entry.postable
 
-    = link_to edit_entry_path(entry) do
-      %span.icon-edit
-      edit
-    = link_to entry_path(entry), :method=>:delete , :confirm=>"are you sure?" do
-      %span.icon-remove
-      destroy
+

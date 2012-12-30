@@ -10,9 +10,9 @@ Postablr::Engine.routes.draw do
   match 'blog/:filter' => 'blog#filter', :as=>:filter_blog, :via => [:get]
 
   resource :blog, :controller=>"blog" do
-    #resources :entries, :controller=> "blog/entries" do
+    resources :entries, :controller=> "blog/entries" do
       #resources :comments, :controller => "blog/comments"
-    #end
+    end
     resources :tags, :controller=>"blog/tags"
     #resources :authors
   end
