@@ -5,4 +5,7 @@
 
 $ ->
   $('.datepicker').datepicker()
+  $(document).on "page:change", ()->
+
+    $(".redactor").redactor()
 
