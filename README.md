@@ -23,9 +23,18 @@ but is a work in progress, don´t use in production!
     + images for SEO
     + Provide meta tags
     + Nofollow external links
+  + Pages
+  + Categories
 
 # installation
 
 gem install postablr
 
+### install migrations
 rake postablr:install:migrations
+
+### initializer setup
+rails g postablr:install
+
+### postablr views
+rails g postablr:views

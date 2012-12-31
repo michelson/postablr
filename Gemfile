@@ -26,6 +26,8 @@ gem "kaminari"
 gem "devise"
 gem "redactor-rails"
 gem 'bootstrap-datepicker-rails'
+gem 'flash_cookie_session'
+gem "plupload-rails"
 
 group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
