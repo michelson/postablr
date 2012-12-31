@@ -6,9 +6,7 @@ module Postablr
     extend ActiveSupport::Concern
 
     included do
-      #extend ClassMethods
       @statuses = [:published, :draft, :upcoming, :expired]
-
       after_initialize :fill_default_publish
     end
 
@@ -53,11 +51,11 @@ module Postablr
         #return if self.included_modules.include?(ArPublishControl::Publishable::InstanceMethods)
         #send :include, ArPublishControl::Publishable::InstanceMethods
 
-        scope :published, lambda{{:conditions => published_conditions}}
-        scope :unpublished, lambda{{:conditions => unpublished_conditions}}
-        scope :upcoming, lambda{{:conditions => upcoming_conditions}}
-        scope :expired, lambda {{:conditions => expired_conditions}}
-        scope :draft, :conditions => {:is_published => false}
+        scope :published, lambda{ where(   published_conditions) }
+        scope :unpublished, lambda{ where(  unpublished_conditions) }
+        scope :upcoming, lambda{ where( upcoming_conditions) }
+        scope :expired, lambda { where(  expired_conditions) }
+        scope :draft, where([ "is_published =?", false])
 
         scope :published_only, lambda {|*args|
           bool = (args.first.nil? ? true : (args.first)) # nil = true by default
@@ -138,6 +136,10 @@ module Postablr
 
     def expired?
       (!unpublish_at.nil? && unpublish_at < Time.now)
+    end
+
+    def draft?
+      !is_published?
     end
 
     # Indefinitely publish the current object right now
