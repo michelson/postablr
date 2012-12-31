@@ -4,4 +4,10 @@ module Postablr
     has_one :entry, :as => :postable
     validates_presence_of :body
   end
+
+
+    def to_s
+      self.body
+    end
+
 end

@@ -1,14 +1,5 @@
-%div.col_system.col.fluid
-  %div.col.medium
-    %article.hentry
-      %h2.entry-title
-        = postable.title
-      %p.byline.author.vcard
-        %span.meta.kind Post
-        By
-        %span.fn
-          = postable.entry.user.name
-      .entry-content
-        = raw sanitize_relaxed( postable.body )
+%h3
+  = postable.title
 
-  = render :partial=>'postablr/blog/show/aside', :locals=>{:postable=>postable}
+.entry-content
+  = raw sanitize_relaxed( postable.body )

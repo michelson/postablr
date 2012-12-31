@@ -1,25 +1,38 @@
 
 - cache("UserEntries-#{entry.id}-#{entry.updated_at}") do
-  %li{:id=>"entry-#{entry.id}", :class=>entry.postable_name}
+  .entry{:id=>"entry-#{entry.id}", :class=>entry.postable_name}
 
     .article_meta
-      %span.meta.badge= entry.postable_name
-      %span.meta.status= entry.is_published ? "Published" : "Not published"
-      %span.meta.author
-        By
-        = entry.user.name
-      %span.date
-        On
-        = l entry.publish_at, :format=>:short
+      .row
+        .span3{:style=>"float:right"}
+          = link_to edit_entry_path(entry) do
+            %span.icon-edit
+            edit
+          = link_to entry_path(entry), :method=>:delete , :confirm=>"are you sure?" do
+            %span.icon-remove
+            destroy
 
-      = link_to edit_entry_path(entry) do
-        %span.icon-edit
-        edit
-      = link_to entry_path(entry), :method=>:delete , :confirm=>"are you sure?" do
-        %span.icon-remove
-        destroy
+        .span6
+          %span.meta.badge
+            = entry.postable_name
+          %span.status
+            = entry.is_published ? "Published" : "Not published"
+          %span.date
+            On
+            = l entry.publish_at, :format=>:short
 
 
-    = render "postablr/entries/list/#{entry.postable_name}",  :postable => entry.postable
+    = render "postablr/blog/list/#{entry.postable_name}",  :postable => entry.postable
+
+    %span.meta.author
+      By:
+      = entry.user.name
+    %span.meta.tags
+      in:
+      = entry.tag_list
+
+    .divider
+
+
 
 

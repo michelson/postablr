@@ -5,4 +5,9 @@ module Postablr
     validates_presence_of :title
     validates_presence_of :url
   end
+
+    def to_s
+      self.title
+    end
+
 end

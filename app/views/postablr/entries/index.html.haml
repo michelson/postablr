@@ -1,9 +1,12 @@
 %h1= t("my_entries")
 
-%section
-  %ul
-    = render :partial=>"entry", :collection => @entries
-
+.span6
+  = render :partial=>"entry", :collection => @entries
+.span5
+  %h3 Posts
+  %h3 Tags
+.span12
   %nav.pagination
     = paginate @entries
+
 

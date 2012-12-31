@@ -1,19 +1,19 @@
-%div.col.small.help
-  %aside
-    %h4
-      Sobre el autor
-    .hentry_metadata
-      -#= image_tag( postable.entry.user.profile.avatar.url(:thumb), :style=>"width:50px" )
-      %h5
-        -#= postable.entry.user.name
-      .bio
-        -#= postable.entry.user.profile.bio
-    %h4
-      Comparte esto
-    .addthis_toolbox.addthis_default_style
-      %a.addthis_button_facebook_like{"fb:like:layout" => "button_count"}
-      %a.addthis_button_tweet
-      %a.addthis_counter.addthis_pill_style
-    %script{:src => "http://s7.addthis.com/js/250/addthis_widget.js#pubid=panchoavila", :type => "text/javascript"}
+
+%aside
+  %h4
+    About the author
+  .metadata
+    -#= image_tag( postable.entry.user.profile.avatar.url(:thumb), :style=>"width:50px" )
+    %h5
+      = @entry.user.name
+    .bio
+      -#= postable.entry.user.profile.bio
+  %h4
+    Share This
+  .addthis_toolbox.addthis_default_style
+    %a.addthis_button_facebook_like{"fb:like:layout" => "button_count"}
+    %a.addthis_button_tweet
+    %a.addthis_counter.addthis_pill_style
+  %script{:src => "http://s7.addthis.com/js/250/addthis_widget.js#pubid=panchoavila", :type => "text/javascript"}
 
 

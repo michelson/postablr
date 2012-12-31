@@ -5,7 +5,7 @@ module Postablr
 
     def show
       @entry = Postablr::Entry.find(params[:id])
-      @relateds = Entry.tagged_with(@entry.tags.map(&:name), :match_all => true).where("entries.id != ?", params[:id])
+      @relateds = Postablr::Entry.tagged_with(@entry.tags.map(&:name)) #, :match_all => true).where("postablr_entries.id != ?", params[:id])
     end
 
   end

@@ -1,17 +1,14 @@
-.page_header.affix{:style=>"background-color: rgb(255, 255, 255); display: block; width: 53%;"}
+.page_header
   %h2 Blog
 
 .row-fluid
-  .span8{:style=>"margin-top: 65px;"}
+  .span8
 
     %section
-      %ul
-        = render :partial=> 'postablr/blog/entry_display', :collection=> @entries, :as=> :entry
+      = render :partial=> 'postablr/blog/entry_display', :collection=> @entries, :as=> :entry
 
       %nav.pagination.publication_paginator
         = paginate @entries
-
-
 
   .span4
     = render "postablr/blog/sidebar"

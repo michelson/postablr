@@ -1,13 +1,9 @@
 %li.article.photo
   = image_tag postable.photo.url(:large)
   .article_meta
-    %span.meta.kind Imagen
+
     %h3
       = raw clean_html( postable.body )
-      %span.meta.author
-        Por
-        = postable.entry.user.name
 
   .article_text
     %p= raw sanitize_relaxed(postable.body)
-  = render :partial=>'postablr/blog/show/aside', :locals=>{:postable=>postable}

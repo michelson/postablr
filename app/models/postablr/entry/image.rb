@@ -13,5 +13,9 @@ module Postablr
       self.photo = uploaded_file
     end
 
+    def to_s
+      self.photo
+    end
+
   end
 end

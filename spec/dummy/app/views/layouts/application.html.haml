@@ -14,17 +14,15 @@
         %ul.nav
           %li.active
             %a{:href => "/"} Home
-          %li
-            = link_to "Entries" , entries_path
+          - if user_signed_in?
+            %li
+              = link_to "Entries" , entries_path
           %li
             = link_to "Blog" , blog_path
 
     .container-fluid
       .row-fluid
-        .span2{:style=>"margin-top:40px"}
-          / Sidebar content
-          = manage_entries_menu
-
-        .span10{:style=>"margin-top:40px"}
+        .span12{:style=>"margin-top:40px"}
           / Body content
+          = manage_entries_menu if user_signed_in?
           = yield

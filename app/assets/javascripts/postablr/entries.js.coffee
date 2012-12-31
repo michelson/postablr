@@ -4,8 +4,8 @@
 #= require redactor-rails
 
 $ ->
-  $('.datepicker').datepicker()
-  $(document).on "page:change", ()->
 
+  $(document).on "page:change", ()->
+    $('.datepicker').datepicker()
     $(".redactor").redactor()
 

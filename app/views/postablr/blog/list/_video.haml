@@ -1,7 +1,8 @@
 
 .article_video
+  %h3= link_to postable.title, blog_entry_path(postable.entry)
+
   = raw postable.embed_html
-  = postable.title
 
 .article_text
   %p

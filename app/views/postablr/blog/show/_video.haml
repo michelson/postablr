@@ -1,4 +1,4 @@
-%li.article.video
+.article.video
 
   .article_meta
     %span.meta.kind Video
@@ -8,9 +8,8 @@
   .article_video
     = raw postable.embed_html
 
-    %p= raw sanitize_relaxed( postable.body )
+    %p
+      -#= raw sanitize_relaxed( postable.body )
 
     %span.meta.author
       = postable.entry.user.name
-
-  = render :partial=>'postablr/blog/show/aside', :locals=>{:postable=>postable}

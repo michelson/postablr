@@ -1,26 +1,28 @@
 
-%ul.nav.nav-list.affix
-  %li
-    = link_to new_entries_for_path("post") do
-      %span.icon-book
-      Publish Text
-  %li
-    = link_to new_entries_for_path("quote") do
-      %span.icon-music
-      Publish Quote
-  %li
-    = link_to new_entries_for_path("image") do
-      %span.icon-camera
-      Publish Image
-  %li
-    = link_to new_entries_for_path("audio") do
-      %span.icon-music
-      Publish Audio
-  %li
-    = link_to new_entries_for_path("video") do
-      %span.icon-facetime-video
-      Publish Video
-  %li
-    = link_to new_entries_for_path("link") do
-      %span.icon-bookmark
-      Publish Link
+.navbar
+  .navbar-inner
+    %ul.nav
+      %li
+        = link_to new_entries_for_path("post") do
+          %span.icon-book
+          Publish Text
+      %li
+        = link_to new_entries_for_path("quote") do
+          %span.icon-music
+          Publish Quote
+      %li
+        = link_to new_entries_for_path("image") do
+          %span.icon-camera
+          Publish Image
+      %li
+        = link_to new_entries_for_path("audio") do
+          %span.icon-music
+          Publish Audio
+      %li
+        = link_to new_entries_for_path("video") do
+          %span.icon-facetime-video
+          Publish Video
+      %li
+        = link_to new_entries_for_path("link") do
+          %span.icon-bookmark
+          Publish Link

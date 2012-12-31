@@ -1,5 +1,0 @@
-
-$("#entry_comments").append('#{  escape_javascript(render( :partial=>"blog/comments/comment", :locals=>{:comment=>@comment })) }');
-$('#forum_comment_body').val('');
-$('#comments_count').html("#{@comment.commentable.comments.size}");
-  

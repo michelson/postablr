@@ -1,4 +1,4 @@
-%li.article.quote
+.quote
   %blockquote.article_quote
     = raw sanitize_relaxed( postable.body)
   .article_meta
@@ -7,6 +7,3 @@
       %span.meta.author
         Por
         = postable.entry.user.name
-
-
-  = render :partial=>'postablr/blog/show/aside', :locals=>{:postable=>postable}

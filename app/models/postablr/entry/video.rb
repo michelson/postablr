@@ -24,6 +24,10 @@ module Postablr
       embed_html(width=425, height=344, options={})
     end
 
+    def to_s
+      self.title
+    end
+
   end
 
 end

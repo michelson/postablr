@@ -1,15 +1,17 @@
-%section
+
+.span9
   - unless @entry.postable.blank?
     = render "postablr/blog/show/#{@entry.postable_name}",  :postable => @entry.postable
 
-  .tags
-    Tags:
-    = raw @entry.tags.collect{|o| link_to o.name, blog_tag_path(o.name)}.join(", ")
+.span2
 
-%aside
+  %h3 Tags:
+  = raw @entry.tags.collect{|o| link_to o.name, blog_tag_path(o.name)}.join(", ")
 
-  - unless @relateds
-    .hentry_related
-      %h2 Related
-      - @relateds.each do |entry|
-        = link_to entry.postable.title , blog_entry_path( entry )
+  - unless @relateds.blank?
+    %h3 Related
+    - @relateds.each do |entry|
+      = link_to entry.postable.to_s , blog_entry_path( entry )
+
+
+  = render "postablr/blog/show/aside"

@@ -2,7 +2,7 @@ class CreatePostablrEntryQuotes < ActiveRecord::Migration
   def change
     create_table :postablr_entry_quotes do |t|
       t.text :body
-      t.string :source
+      t.text :source
 
       t.timestamps
     end
