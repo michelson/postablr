@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # This migration comes from postablr (originally 20121222200303)
 class CreatePostablrEntryLinks < ActiveRecord::Migration
   def change

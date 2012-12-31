@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Postablr
   class Entry::Image < ActiveRecord::Base
     attr_accessible :body, :photo, :photo_content_type, :photo_size

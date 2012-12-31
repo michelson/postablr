@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreatePostablrEntries < ActiveRecord::Migration
   def change
     create_table :postablr_entries do |t|

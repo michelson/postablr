@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreatePostablrEntryAudios < ActiveRecord::Migration
   def change
     create_table :postablr_entry_audios do |t|

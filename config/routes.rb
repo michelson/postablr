@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Postablr::Engine.routes.draw do
 
   resources :entries

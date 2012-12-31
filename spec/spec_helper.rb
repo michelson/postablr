@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../spec/dummy/config/environment", __FILE__)
@@ -6,6 +7,8 @@ require 'rspec/autorun'
 
 require "factory_girl_rails"
 require "database_cleaner"
+require 'capybara'
+require 'capybara/rspec'
 require 'shoulda/matchers/integrations/rspec'
 
 
@@ -31,6 +34,8 @@ RSpec.configure do |config|
   # config.mock_with :rr
 
   config.include FactoryGirl::Syntax::Methods
+  config.include Capybara::DSL
+  config.include Capybara::RSpecMatchers
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"

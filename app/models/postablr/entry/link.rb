@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Postablr
   class Entry::Link < ActiveRecord::Base
     attr_accessible :title, :url

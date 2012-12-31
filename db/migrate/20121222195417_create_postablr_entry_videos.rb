@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreatePostablrEntryVideos < ActiveRecord::Migration
   def change
     create_table :postablr_entry_videos do |t|

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Postablr
   module Generators
     # Include this module in your generator to generate Postablr views.

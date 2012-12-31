@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Postablr
   class Entry::Post < ActiveRecord::Base
     attr_accessible :body, :body, :title

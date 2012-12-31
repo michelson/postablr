@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Postablr
   class Entry < ActiveRecord::Base
     attr_accessible :comments_enabled, :content_source, :highlight,

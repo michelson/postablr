@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Postablr.setup do |config|
   config.page_title = "Postablr Example"
   config.user_class = "User"

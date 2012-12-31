@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Postablr
   class Entry::Video < ActiveRecord::Base
     attr_accessible :download_url, :duration,

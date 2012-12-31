@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_dependency "postablr/application_controller"
 
 module Postablr

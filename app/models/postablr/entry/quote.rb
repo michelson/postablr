@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Postablr
   class Entry::Quote < ActiveRecord::Base
     attr_accessible :body, :source
