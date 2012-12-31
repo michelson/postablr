@@ -7,9 +7,8 @@ module Postablr
   end
 
   mattr_accessor  :user_class,
-                  :name,
-                  :page_title ,
-                  :post_per_page ,
-                  :description ,
+                  :page_title,
+                  :post_per_page,
+                  :description,
                   :password
 end

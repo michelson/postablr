@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Entry::Audio do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Postablr::Entry::Audio do
+  it{should have_one :entry}
 end
