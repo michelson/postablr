@@ -52,4 +52,7 @@ end
 # your gem to rubygems.org.
 
 # To use debugger
-# gem 'ruby-debug'
+group :development, :test do
+  # gem 'ruby-debug'
+  gem "debugger"
+end

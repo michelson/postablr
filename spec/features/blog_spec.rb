@@ -7,4 +7,6 @@ describe "Blog integration" do
     visit "/blog"
   end
 
+
+
 end
