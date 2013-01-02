@@ -3,6 +3,9 @@
   - unless @entry.postable.blank?
     = render "postablr/blog/show/#{@entry.postable_name}",  :postable => @entry.postable
 
+    #disqus_thread
+      = render 'postablr/shared/disqus_embed'
+
 .span2
 
   %h3 Tags:
@@ -12,6 +15,9 @@
     %h3 Related
     - @relateds.each do |entry|
       = link_to entry.postable.to_s , blog_entry_path( entry )
+
+
+
 
 
   = render "postablr/blog/show/aside"

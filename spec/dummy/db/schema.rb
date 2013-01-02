@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20130101232837) do
     t.datetime "publish_at"
     t.datetime "unpublish_at"
     t.string   "state"
+    t.string   "password"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end

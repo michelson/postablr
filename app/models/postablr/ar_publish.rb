@@ -188,11 +188,7 @@ module Postablr
         when "now"
           publish
         when "queue"
-          #not implemented
-          #self.state = "queue"
-          #self.is_published = true
-          #self.unpublish_at = nil
-          #self.publish_at = self.publish_at
+          #not implemented , maybe enqueue a task for later publication
         when "on"
           self.state = "published"
           self.is_published = true
