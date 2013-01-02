@@ -16,7 +16,8 @@ but is a work in progress, don´t use in production!
 
 + TODO
   + blogs support if many blogs in site
-
+  + auto save (draft)
+  + disqus integration
   + SEO
     + related posts
     + post title

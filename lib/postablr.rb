@@ -11,5 +11,7 @@ module Postablr
                   :page_title,
                   :post_per_page,
                   :description,
-                  :password
+                  :password,
+                  :disqus_shortname,
+                  :google_analytics_id
 end

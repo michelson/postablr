@@ -9,7 +9,6 @@ module Postablr
       @statuses = [:published, :draft, :upcoming, :expired]
       after_initialize :fill_default_publish
       attr_accessor :publish_state
-
     end
 
     module ClassMethods
@@ -142,7 +141,7 @@ module Postablr
     end
 
     def draft?
-      !is_published?
+      !is_published? && state == "draft"
     end
 
     # Indefinitely publish the current object right now
@@ -174,7 +173,13 @@ module Postablr
     end
 
     def publisher_collection
-      [["Publish now", "now"], ["add to queue", "queue"], ["publish on...", "on"], ["save as draft", "as_draft"], ["private", "private"]]
+      [
+        ["Publish now", "now"],
+        #["add to queue", "queue"],
+        ["publish on...", "on"],
+        ["save as draft", "as_draft"],
+        ["private", "private"]
+      ]
     end
 
     def set_publication_state
@@ -183,18 +188,19 @@ module Postablr
         when "now"
           publish
         when "queue"
-          self.is_published = true
-          self.unpublish_at = nil
-          self.publish_at = self.publish_at
+          #not implemented , maybe enqueue a task for later publication
         when "on"
+          self.state = "published"
           self.is_published = true
           self.publish_at = self.publish_at
           self.unpublish_at = nil
         when "as_draft"
+          self.state = "draft"
           self.is_published = false
           self.unpublish_at = nil
           self.publish_at = nil
         when "private"
+          self.state  = "private"
           self.password = random_password
         end
     end
