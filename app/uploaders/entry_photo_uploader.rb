@@ -26,11 +26,11 @@ class EntryPhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb_large do
-    process :resize_to_fill => [216, 144]
+    process :resize_to_fill => [416, 184]
   end
 
   version :large do
-    process :resize_to_fit => [620, 360]
+    process :resize_to_fit => [720, 360]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
