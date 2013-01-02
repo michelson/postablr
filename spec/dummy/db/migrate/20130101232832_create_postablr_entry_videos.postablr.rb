@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # This migration comes from postablr (originally 20121222195417)
+# -*- encoding : utf-8 -*-
 class CreatePostablrEntryVideos < ActiveRecord::Migration
   def change
     create_table :postablr_entry_videos do |t|

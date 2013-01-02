@@ -37,10 +37,15 @@
         %h4
           %span.icon-wrench
           Options
+        = f.input :publish_state , as: :select, collection: @entry.publisher_collection, label: false, include_blank: false
         = f.input :publish_at  , :as=>:string, :input_html=>{:class=>"datepicker"}
-        = f.input :unpublish_at, :as=>:string, :input_html=>{:class=>"datepicker"}
-        = f.input :comments_enabled
-        = f.input :highlight
-        = f.input :is_published
-        = f.input :slug
-        = f.input :content_source
+        -#= f.input :unpublish_at, :as=>:string, :input_html=>{:class=>"datepicker"}
+        -#= f.input :is_published
+        .span4
+          = f.input :comments_enabled
+        .span2
+          = f.input :highlight
+        .span12
+          = f.input :slug
+        .span12
+          = f.input :content_source

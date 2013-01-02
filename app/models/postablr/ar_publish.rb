@@ -8,6 +8,8 @@ module Postablr
     included do
       @statuses = [:published, :draft, :upcoming, :expired]
       after_initialize :fill_default_publish
+      attr_accessor :publish_state
+
     end
 
     module ClassMethods
@@ -51,10 +53,10 @@ module Postablr
         #return if self.included_modules.include?(ArPublishControl::Publishable::InstanceMethods)
         #send :include, ArPublishControl::Publishable::InstanceMethods
 
-        scope :published, lambda{ where(   published_conditions) }
-        scope :unpublished, lambda{ where(  unpublished_conditions) }
-        scope :upcoming, lambda{ where( upcoming_conditions) }
-        scope :expired, lambda { where(  expired_conditions) }
+        scope :published, lambda{ where( published_conditions ) }
+        scope :unpublished, lambda{ where( unpublished_conditions ) }
+        scope :upcoming, lambda{ where( upcoming_conditions ) }
+        scope :expired, lambda { where( expired_conditions ) }
         scope :draft, where([ "is_published =?", false])
 
         scope :published_only, lambda {|*args|
@@ -63,7 +65,8 @@ module Postablr
         }
 
         validate :validate_publish_date_consistency
-        before_create :publish_by_default if options[:publish_by_default]
+        #before_create :publish_by_default if options[:publish_by_default]
+        before_create :set_publication_state #if lambda{ self.publish_state }
       end
 
       # Takes a block whose containing SQL queries are limited to
@@ -168,6 +171,37 @@ module Postablr
     def unpublish!
       unpublish
       save!
+    end
+
+    def publisher_collection
+      [["Publish now", "now"], ["add to queue", "queue"], ["publish on...", "on"], ["save as draft", "as_draft"], ["private", "private"]]
+    end
+
+    def set_publication_state
+      return if self.publish_state.blank?
+      case self.publish_state
+        when "now"
+          publish
+        when "queue"
+          self.is_published = true
+          self.unpublish_at = nil
+          self.publish_at = self.publish_at
+        when "on"
+          self.is_published = true
+          self.publish_at = self.publish_at
+          self.unpublish_at = nil
+        when "as_draft"
+          self.is_published = false
+          self.unpublish_at = nil
+          self.publish_at = nil
+        when "private"
+          self.password = random_password
+        end
+    end
+
+    def random_password(size = 8)
+      chars = (('a'..'z').to_a + ('0'..'9').to_a) - %w(i o 0 1 l 0)
+      (1..size).collect{|a| chars[rand(chars.size)] }.join
     end
 
   end

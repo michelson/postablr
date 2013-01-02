@@ -19,6 +19,7 @@ module Postablr
       @entry = current_user.entries.new(params[:entry].except("postable_attributes"))
       #@entry.tag_list = ActsAsTaggableOn::Tag.find(params[:tag_list_input]).map(&:name) unless params[:tag_list_input].blank?
       @entry.postable = "Postablr::Entry::#{params[:type].capitalize}".constantize.new(params[:entry][:postable_attributes])
+
       create!{
         if @entry.errors.blank?
           entry_url(@entry)

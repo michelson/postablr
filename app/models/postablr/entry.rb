@@ -3,7 +3,8 @@ module Postablr
   class Entry < ActiveRecord::Base
     attr_accessible :comments_enabled, :content_source, :highlight,
     :is_published, :postable_id, :postable_type, :publish_at, :slug,
-    :unpublish_at, :user_id, :postable_attributes, :tag_list
+    :unpublish_at, :user_id, :postable_attributes, :tag_list,
+    :publish_state
 
     belongs_to :user
     belongs_to :postable, :polymorphic => true , :dependent=>:destroy , :touch => true

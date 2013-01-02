@@ -28,6 +28,7 @@ gem "redactor-rails"
 gem 'bootstrap-datepicker-rails'
 gem 'flash_cookie_session'
 gem "plupload-rails"
+gem "state_machine"
 
 group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -53,6 +54,6 @@ end
 
 # To use debugger
 group :development, :test do
-  # gem 'ruby-debug'
+  #gem 'ruby-debug'
   gem "debugger"
 end

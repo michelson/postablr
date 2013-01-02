@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # This migration comes from postablr (originally 20121222195404)
+# -*- encoding : utf-8 -*-
 class CreatePostablrEntries < ActiveRecord::Migration
   def change
     create_table :postablr_entries do |t|
@@ -13,7 +13,7 @@ class CreatePostablrEntries < ActiveRecord::Migration
       t.boolean :is_published
       t.datetime :publish_at
       t.datetime :unpublish_at
-
+      t.string :state
       t.timestamps
     end
   end

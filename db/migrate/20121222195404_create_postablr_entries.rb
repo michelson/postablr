@@ -12,7 +12,8 @@ class CreatePostablrEntries < ActiveRecord::Migration
       t.boolean :is_published
       t.datetime :publish_at
       t.datetime :unpublish_at
-
+      t.string :state
+      t.string :password
       t.timestamps
     end
   end

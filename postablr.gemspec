@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "haml"
   s.add_dependency "mini_magick"
   s.add_dependency "kaminari"
+  s.add_dependency "state_machine"
 
   # s.add_dependency "jquery-rails"
 

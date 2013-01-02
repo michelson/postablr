@@ -8,7 +8,7 @@ describe Postablr::Entry do
   describe "Entry" do
     before(:each) do
       @user = Factory.create(:user)
-      Postablr::Entry.destroy_all
+
       @published_post = @user.entries.create do |p|
         p.publish_at = 1.day.ago
         p.unpublish_at = 2.days.from_now
@@ -45,7 +45,6 @@ describe Postablr::Entry do
 
   describe "Entry", "unpublished by default" do
     before(:each) do
-      Postablr::Entry.destroy_all
       @user = Factory.create(:user)
       @a1 = @user.entries.create
       @invalid = @user.entries.create( :publish_at => '')
@@ -70,7 +69,6 @@ describe Postablr::Entry do
 
   describe "Entry", 'upcoming' do
     before(:each) do
-      Postablr::Entry.destroy_all
       @user = Factory.create(:user)
       @p1 = @user.entries.create(:is_published => true,:publish_at => 1.day.from_now) #upcoming
       @p2 = @user.entries.create(:is_published => true,:publish_at => 1.week.from_now)#upcoming
@@ -106,7 +104,6 @@ describe Postablr::Entry do
 
   describe "Entry", 'draft' do
     before(:each) do
-      Postablr::Entry.destroy_all
       @user = Factory.create(:user)
       @p1 = @user.entries.create(:is_published => true, :publish_at => 2.weeks.ago) #published
       @p2 = @user.entries.create(:is_published => true, :publish_at => 2.weeks.ago,:unpublish_at => 1.day.ago) #expired
